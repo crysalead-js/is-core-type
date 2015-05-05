@@ -1,0 +1,15 @@
+{
+  "name": "is-native-type",
+  "version": "1.0.0",
+  "description": "Type checking of Javascript native types.",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/crysalead-js/is-native-type.git"
+  },
+  "devDependencies": {
+    "jasmine": "^2.2.1"
+  },
+  "scripts": {
+    "test": "jasmine"
+  }
+}
