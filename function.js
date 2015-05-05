@@ -5,5 +5,5 @@
  * @return Boolean
  */
 module.exports = function(value) {
-  return toString.call(value) === "[object Function]";
+  return typeof value == "function";
 };
