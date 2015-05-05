@@ -1,96 +1,41 @@
 /**
  * Type checking of Javascript native types.
  */
-var _ = Object.create(null);
+var isObject = require("./object.js");
+var isPlainObject = require("./plain-object.js");
+var isArray = require("./array.js");
+var isTypedArray = require("./typed-array.js");
+var isNumber = require("./number.js");
+var isString = require("./string.js");
+var isBoolean = require("./boolean.js");
+var isDate = require("./date.js");
+var isRegExp = require("./reg-exp.js");
+var isFunction = require("./function.js");
+var isScalar = require("./scalar.js");
 
-/**
- * Boolean type check.
- *
- * @param  mixed   value The value to check.
- * @return Boolean
- */
-_.isBoolean = function(value) {
-  return typeof value === 'boolean';
-}
-
-/**
- * Object type check.
- *
- * @param  mixed   value The value to check.
- * @return Boolean
- */
-_.isObject = function(value) {
-   return value !== null && typeof value === 'object';
-}
-
-/**
- * Strict object type check. Only returns `true`
- * for plain JavaScript objects.
- *
- * @param  mixed   value The value to check.
- * @return Boolean
- */
-_.isPlainObject = function(value) {
-  return _.isObject(value) && value.constructor === Object;
-}
-
-/**
- * Array type check.
- *
- * @param  mixed   value The value to check.
- * @return Boolean
- */
-_.isArray = function(value) {
-  return Array.isArray(value);
-}
-
-/**
- * Array type check.
- *
- * @param  mixed   data The value to check.
- * @return Boolean
- */
-_.isTypedArray = function(value) {
-  return !!(value && value.constructor && value.constructor.BYTES_PER_ELEMENT > 0);
-}
-
-/**
- * Scalar type check.
- *
- * @param  mixed   data The value to check.
- * @return Boolean
- */
-_.isScalar = function(value) {
-  return value === null ||
-         typeof value === "boolean"  ||
-         typeof value === "number"   ||
-         typeof value === "string"   ||
-         typeof value === "undefined";
-}
-
-/**
- * Various type check: isFunction, isString, isNumber, isDate, isRegExp.
- *
- * @param  mixed   value The object to check.
- * @return Boolean
- */
-var types = ["Function", "String", "Number", "Date", "RegExp"];
-
-types.forEach(function(name) {
-  _["is" + name] = function(value) {
-    return toString.call(value) === '[object ' + name + ']';
-  };
-});
+var is = {
+  isObject: isObject,
+  isPlainObject: isPlainObject,
+  isArray: isArray,
+  isTypedArray: isTypedArray,
+  isNumber: isNumber,
+  isString: isString,
+  isBoolean: isBoolean,
+  isDate: isDate,
+  isRegExp: isRegExp,
+  isFunction: isFunction,
+  isScalar: isScalar
+};
 
 /**
  * Extends an object with this module functions.
  *
  * @param Object object The object to extend.
  */
-_.extend = function(object) {
-  for (key in _) {
-    object[key] = _[key];
+is.extend = function(object) {
+  for (key in is) {
+    object[key] = is[key];
   }
 }
 
-module.exports = _;
+module.exports = is;

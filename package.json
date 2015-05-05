@@ -1,6 +1,6 @@
 {
   "name": "is-native-type",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Type checking of Javascript native types.",
   "repository": {
     "type": "git",
