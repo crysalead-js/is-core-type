@@ -22,7 +22,6 @@ describe('.isBoolean()', function() {
 
 });
 
-
 describe('.isObject()', function() {
 
   it('returns true for objects', function() {

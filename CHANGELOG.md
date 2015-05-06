@@ -2,6 +2,10 @@
 
 ## HEAD
 
+## 1.0.3 (2015-05-06)
+
+  * Revert repo refactoring.
+
 ## 1.0.2 (2015-05-05)
 
   * Minor optimizations.
